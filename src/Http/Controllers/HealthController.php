@@ -20,6 +20,10 @@ class HealthController extends Controller
         $this->HealthWrapper = $healthWrapper;
     }
 
+    /**
+     * List messages about healtch checks chosen
+     * @return Response
+     */
     public function index()
     {
         try {
@@ -57,6 +61,8 @@ class HealthController extends Controller
 
     /**
      * health message getter
+     * 
+     * @return array $health
      */
     private function getHealth()
     {
@@ -74,6 +80,9 @@ class HealthController extends Controller
 
     /**
      * Tries to write and deletes a file on the selected storage
+     * 
+     * @param string $storage
+     * @return null
      */
     public function checkStorage(string $storage)
     {
@@ -96,6 +105,7 @@ class HealthController extends Controller
 
     /**
      * Verifies that the DB connection is returned correctly
+     * @return null
      */
     public function checkDb()
     {
@@ -118,6 +128,7 @@ class HealthController extends Controller
 
     /**
      * Verifies that the space left on the volume is more than 1Gb
+     * @return null
      */
     public function checkFreeSpace()
     {
@@ -133,6 +144,7 @@ class HealthController extends Controller
 
     /**
      * Tries to get a list of files from the s3 attachments directory
+     * @return null
      */
     public function checkS3Storage()
     {

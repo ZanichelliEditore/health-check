@@ -64,7 +64,7 @@ class HealthController extends Controller
      * 
      * @return array $health
      */
-    private function getHealth()
+    public function getHealth()
     {
         return $this->health;
     }
@@ -73,7 +73,7 @@ class HealthController extends Controller
     /**
      * Wrapper to check the local storage is writable
      */
-    private function checkLocalStorage()
+    public function checkLocalStorage()
     {
         return $this->checkStorage('local');
     }
@@ -84,7 +84,7 @@ class HealthController extends Controller
      * @param string $storage
      * @return null
      */
-    public function checkStorage(string $storage)
+    private function checkStorage(string $storage)
     {
         try {
             if ($this->HealthWrapper->storageDisk($storage)->put('file.txt', 'Contents')) {
@@ -118,7 +118,6 @@ class HealthController extends Controller
                 $this->fail = true;
             }
         } catch (\Exception $e) {
-            dd($e);
             $this->health['db']['status'] = 'ko';
             $this->health['db']['message'] = $e->getMessage();
             $this->fail = true;

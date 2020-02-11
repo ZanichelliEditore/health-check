@@ -189,7 +189,7 @@ class HealthTest extends TestCase
     {
         $mock = Mockery::mock(HealthCheckWrapper::class)->makePartial()
             ->shouldReceive([
-                'disk_free_space' => (config('healthcheck.free_size_limit') + 1),
+                'disk_free_space' => (config('healthcheck::params.free_size_limit') + 1),
             ])
             ->withAnyArgs()
             ->once()
@@ -209,7 +209,7 @@ class HealthTest extends TestCase
     {
         $mock = Mockery::mock(HealthCheckWrapper::class)->makePartial()
             ->shouldReceive([
-                'disk_free_space' => (config('healthcheck.free_size_limit') - 1),
+                'disk_free_space' => (config('healthcheck::params.free_size_limit') - 1),
             ])
             ->withAnyArgs()
             ->twice()
@@ -221,7 +221,7 @@ class HealthTest extends TestCase
             $healthController->getHealth(),
             array('freeSpace' => array(
                 'status' => 'ko',
-                'message' => trans('healthcheck::messages.NoDiskSpace', ['space' => (config('healthcheck.free_size_limit') - 1)])
+                'message' => trans('healthcheck::messages.NoDiskSpace', ['space' => (config('healthcheck::params.free_size_limit') - 1)])
             ))
         );
     }

@@ -114,7 +114,7 @@ class HealthController extends Controller
                 $this->health['db']['status'] = 'ok';
             } else {
                 $this->health['db']['status'] = 'ko';
-                $this->health['db']['message'] = trans('healthcheck::messages.UnableToWriteOnDisk');
+                $this->health['db']['message'] = trans('healthcheck::messages.DatabaseConnectionNotAvailable');
                 $this->fail = true;
             }
         } catch (\Exception $e) {

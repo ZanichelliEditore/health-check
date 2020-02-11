@@ -9,6 +9,7 @@ use Zanichelli\HealthCheck\Http\Models\Status;
 
 class S3Checker implements CheckerInterface
 {
+    private const SERVICE_NAME = 'awsFileSystem';
     private $diskName;
 
     public function __construct(string $diskName)
@@ -18,14 +19,14 @@ class S3Checker implements CheckerInterface
 
     public function check(): Status
     {
-        $status = new Status();
+        $status = new Status(self::SERVICE_NAME . '/' . $this->diskName);
 
         try {
             Storage::disk($this->diskName);
         } catch (Exception $e) {
             Log::error($e->getMessage());
             $status->setAvailable(false);
-            $status->setMessage(trans('healtcheck::messages.ErrorConnectionS3'));
+            $status->setMessage(trans('healthcheck::messages.ErrorConnectionS3'));
         }
 
         return $status;

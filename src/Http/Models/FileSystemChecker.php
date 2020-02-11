@@ -9,6 +9,8 @@ use Zanichelli\HealthCheck\Http\Models\Status;
 
 class FileSystemChecker implements CheckerInterface
 {
+    private const SERVICE_NAME = 'filesystem';
+
     private $diskName;
     private $path;
     private $limitThreshold;
@@ -22,7 +24,7 @@ class FileSystemChecker implements CheckerInterface
 
     public function check(): Status
     {
-        $status = new Status();
+        $status = new Status(self::SERVICE_NAME . '/' . $this->diskName);
         $freeSpace = disk_free_space($this->path);
 
         try {
@@ -30,13 +32,13 @@ class FileSystemChecker implements CheckerInterface
 
             if (!$saved) {
                 $status->setAvailable(false);
-                $status->setMessage(trans('healtcheck::messages.filesystem.WritingError'));
+                $status->setMessage(trans('healthcheck::messages.filesystem.WritingError'));
             }
             Storage::disk($this->diskName)->delete('healthcheck.temp');
         } catch (Exception $e) {
             Log::error($e->getMessage());
             $status->setAvailable(false);
-            $status->setMessage(trans('healtcheck::messages.DiskNotAvailable'));
+            $status->setMessage(trans('healthcheck::messages.DiskNotAvailable'));
 
             return $status;
         }
@@ -44,8 +46,9 @@ class FileSystemChecker implements CheckerInterface
         if ($freeSpace < $this->limitThreshold) {
             $status->setMetadata([
                 'freespace' => [
-                    'size' => ($freeSpace / 1024) / 1024,
-                    'message' => trans('healtcheck::messages.filesystem.NoDiskSpace')
+                    'size' => (int) (($freeSpace / 1024) / 1024),
+                    'unit' => 'Megabyte',
+                    'message' => trans('healthcheck::messages.filesystem.NoDiskSpace')
                 ]
             ]);
         };

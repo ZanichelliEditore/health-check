@@ -4,15 +4,52 @@ namespace Zanichelli\HealthCheck\Http\Models;
 
 class Status
 {
+    private $service;
     private $available;
     private $message;
     private $metadata;
 
-    public function __construct(bool $available = true, string $message = null, array $metadata = [])
+    public function __construct(string $service, bool $available = true, string $message = null, array $metadata = [])
     {
+        $this->service =  $service;
         $this->available =  $available;
         $this->message =  $message;
         $this->metadata =  $metadata;
+    }
+
+    public function getService()
+    {
+        return $this->service;
+    }
+
+    public function getAvailable()
+    {
+        return $this->available;
+    }
+
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    public function getMetadata()
+    {
+        return $this->metadata;
+    }
+
+    public function getAll()
+    {
+        return [
+            'service' => $this->service,
+            'available' => $this->available,
+            'message' => $this->message,
+            'metadata' => $this->metadata,
+        ];
+    }
+
+    public function setService(string $service)
+    {
+        $this->service = $service;
     }
 
     public function setAvailable(bool $available)

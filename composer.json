@@ -25,5 +25,6 @@
         "HealthCheck": "Zanichelli\\healthcheck\\Facades\\HealthCheck"
       }
     }
-  }
+  },
+  "license": "MIT"
 }

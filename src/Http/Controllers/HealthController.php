@@ -131,9 +131,9 @@ class HealthController extends Controller
      */
     public function checkFreeSpace()
     {
-        if ($this->HealthWrapper->disk_free_space(config('healthcheck::params.volume_path')) < config('healthcheck::params.free_size_limit')) {
+        if ($this->HealthWrapper->disk_free_space(config('healthcheck.params.volume_path')) < config('healthcheck.params.free_size_limit')) {
             $this->health['freeSpace']['status'] = 'ko';
-            $this->health['freeSpace']['message'] = trans('healthcheck::messages.NoDiskSpace', ['space' => $this->HealthWrapper->disk_free_space(config('healthcheck::params.volume_path'))]);
+            $this->health['freeSpace']['message'] = trans('healthcheck::messages.NoDiskSpace', ['space' => $this->HealthWrapper->disk_free_space(config('healthcheck.params.volume_path'))]);
             $this->fail = true;
         } else {
             $this->health['freeSpace']['status'] = 'ok';

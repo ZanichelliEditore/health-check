@@ -9,6 +9,12 @@ use Zanichelli\HealthCheck\Http\Models\FileSystemChecker;
 class HealthCheckService
 {
 
+    /**
+     * Valuate system depending config parmameters
+     *
+     * @param array $checks
+     * @return array
+     */
     public function checkSystem(array $checks)
     {
         $checkers = [];

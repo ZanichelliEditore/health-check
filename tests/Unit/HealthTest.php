@@ -3,8 +3,8 @@
 namespace Tests\Unit;
 
 use Mockery;
-use Tests\TestCase;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Foundation\Testing\TestCase;
 use Zanichelli\HealthCheck\Wrappers\HealthCheckWrapper;
 use Zanichelli\HealthCheck\Http\Controllers\HealthController;
 

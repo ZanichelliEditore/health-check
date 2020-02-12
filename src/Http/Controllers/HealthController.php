@@ -25,6 +25,14 @@ class HealthController extends Controller
         $service = new HealthCheckService();
 
         $data = $service->checkSystem($this->checks);
+        $finalStatus = array_reduce($data, function ($accumulator, $item) {
+            return $accumulator && $item['available'];
+        }, true);
+
+        if (!$finalStatus) {
+            return Response::make(['status' => $data], 400);
+        }
+
         return Response::make(['status' => $data], 200);
     }
 }

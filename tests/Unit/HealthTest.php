@@ -3,11 +3,11 @@
 namespace Zanichelli\HealthCheck\Tests\Unit;
 
 use Mockery;
-use PHPUnit\Framework\TestCase;
+use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Zanichelli\HealthCheck\Http\Services\HealthCheckService;
 use Zanichelli\HealthCheck\Http\Controllers\HealthController;
 
-class HealthTest extends TestCase
+class HealthTest extends OrchestraTestCase
 {
 
     /**
@@ -17,14 +17,14 @@ class HealthTest extends TestCase
      */
     public function checkServiceTest()
     {
-        // Mockery::mock(HealthCheckService::class, function ($mock) {
-        //     $mock->shouldReceive([
-        //         'checkSystem' => [],
-        //     ])
-        //         ->withAnyArgs()
-        //         ->once()
-        //         ->getMock();
-        // });
+        Mockery::mock(HealthCheckService::class, function ($mock) {
+            $mock->shouldReceive([
+                'checkSystem' => [],
+            ])
+                ->withAnyArgs()
+                ->once()
+                ->getMock();
+        });
         // $mock = Mockery::mock(HealthCheckService::class)->makePartial()
         //     ->shouldReceive([
         //         'checkSystem' => [],
@@ -33,7 +33,7 @@ class HealthTest extends TestCase
         //     ->once()
         //     ->getMock();
         // $this->app->instance(HealthCheckService::class, $mock);
-        $test = new HealthCheckService();
+        // $test = new HealthCheckService();
         $healthController = new HealthController();
         $response = $healthController->index();
         $response->assertStatusCode(400);

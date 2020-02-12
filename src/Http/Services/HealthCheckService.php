@@ -30,7 +30,13 @@ class HealthCheckService
         }
 
         return array_map(function ($item) {
-            return $item->check()->getAll();
+            $status = $item->check();
+            return [
+                'service' => $status->getService(),
+                'available' => $status->getAvailable(),
+                'message' => $status->getMessage(),
+                'metadata' => $status->getMetadata()
+            ];
         }, $checkers);
     }
 

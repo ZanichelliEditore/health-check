@@ -37,16 +37,6 @@ class Status
         return $this->metadata;
     }
 
-    public function getAll()
-    {
-        return [
-            'service' => $this->service,
-            'available' => $this->available,
-            'message' => $this->message,
-            'metadata' => $this->metadata,
-        ];
-    }
-
     public function setService(string $service)
     {
         $this->service = $service;

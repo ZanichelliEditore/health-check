@@ -33,8 +33,9 @@ class FileSystemChecker implements CheckerInterface
             if (!$saved) {
                 $status->setAvailable(false);
                 $status->setMessage(trans('healthcheck::messages.filesystem.WritingError'));
+            } else {
+                Storage::disk($this->diskName)->delete('healthcheck.temp');
             }
-            Storage::disk($this->diskName)->delete('healthcheck.temp');
         } catch (Exception $e) {
             Log::error($e->getMessage());
             $status->setAvailable(false);

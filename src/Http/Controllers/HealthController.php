@@ -21,7 +21,6 @@ class HealthController extends Controller
      */
     public function index()
     {
-
         $service = new HealthCheckService();
 
         $data = $service->checkSystem($this->checks);

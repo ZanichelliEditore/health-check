@@ -35,5 +35,9 @@
       ]
     }
   },
+  "scripts": {
+    "tests": "vendor/bin/phpunit tests",
+    "tests-coverage": "vendor/bin/phpunit tests --coverage-html tmp/coverage"
+  },
   "license": "MIT"
 }

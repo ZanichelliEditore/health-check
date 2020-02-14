@@ -9,10 +9,12 @@ use Illuminate\Routing\Controller;
 class HealthController extends Controller
 {
     private $checks;
+    private $healthService;
 
-    public function __construct()
+    public function __construct(HealthCheckService $healthService)
     {
         $this->checks = config('healthcheck');
+        $this->healthService = $healthService;
     }
 
     /**
@@ -21,9 +23,13 @@ class HealthController extends Controller
      */
     public function index()
     {
-        $service = new HealthCheckService();
 
-        $data = $service->checkSystem($this->checks);
+        $data = $this->healthService->checkSystem($this->checks);
+
+        if (empty($data)) {
+            return Response::make([], 204);
+        }
+
         $finalStatus = array_reduce($data, function ($accumulator, $item) {
             return $accumulator && $item['available'];
         }, true);
@@ -31,7 +37,6 @@ class HealthController extends Controller
         if (!$finalStatus) {
             return Response::make(['status' => $data], 400);
         }
-
         return Response::make(['status' => $data], 200);
     }
 }

@@ -5,12 +5,11 @@ namespace Zanichelli\HealthCheck\Http\Models;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Zanichelli\HealthCheck\Http\Constants\Service;
 use Zanichelli\HealthCheck\Http\Models\Status;
 
 class FileSystemChecker implements CheckerInterface
 {
-    private const SERVICE_NAME = 'filesystem';
-
     private $diskName;
     private $path;
     private $limitThreshold;
@@ -24,7 +23,7 @@ class FileSystemChecker implements CheckerInterface
 
     public function check(): Status
     {
-        $status = new Status(self::SERVICE_NAME . '/' . $this->diskName);
+        $status = new Status(Service::FILESYSTEM . '/' . $this->diskName);
         $freeSpace = disk_free_space($this->path);
 
         try {

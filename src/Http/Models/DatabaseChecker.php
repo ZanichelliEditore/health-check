@@ -5,11 +5,11 @@ namespace Zanichelli\HealthCheck\Http\Models;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Zanichelli\HealthCheck\Http\Constants\Service;
 use Zanichelli\HealthCheck\Http\Models\Status;
 
 class DatabaseChecker implements CheckerInterface
 {
-    private const SERVICE_NAME = 'database';
     private $connectionName;
 
     public function __construct(string $connectionName)
@@ -19,7 +19,7 @@ class DatabaseChecker implements CheckerInterface
 
     public function check(): Status
     {
-        $status = new Status(self::SERVICE_NAME . '/' . $this->connectionName);
+        $status = new Status(Service::DATABASE . '/' . $this->connectionName);
 
         try {
             DB::connection($this->connectionName)->getPdo();

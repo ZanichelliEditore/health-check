@@ -5,11 +5,11 @@ namespace Zanichelli\HealthCheck\Http\Models;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Zanichelli\HealthCheck\Http\Constants\Service;
 use Zanichelli\HealthCheck\Http\Models\Status;
 
 class S3Checker implements CheckerInterface
 {
-    private const SERVICE_NAME = 'awsFileSystem';
     private $diskName;
 
     public function __construct(string $diskName)
@@ -19,7 +19,7 @@ class S3Checker implements CheckerInterface
 
     public function check(): Status
     {
-        $status = new Status(self::SERVICE_NAME . '/' . $this->diskName);
+        $status = new Status(Service::S3 . '/' . $this->diskName);
 
         try {
             Storage::disk($this->diskName);

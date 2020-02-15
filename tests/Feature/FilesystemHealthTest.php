@@ -2,11 +2,18 @@
 
 namespace Zanichelli\HealthCheck\Tests\Feature;
 
-use Zanichelli\HealthCheck\Http\Constants\Service;
+use Illuminate\Support\Facades\Storage;
 use Zanichelli\HealthCheck\Tests\TestCase;
+use Zanichelli\HealthCheck\Http\Constants\Service;
 
 class FilesystemHealthTest extends TestCase
 {
+
+    protected function setup(): void
+    {
+        parent::setUp();
+        Storage::fake('local');
+    }
 
     /**
      * Define environment setup.

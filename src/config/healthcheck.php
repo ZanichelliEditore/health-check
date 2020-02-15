@@ -27,6 +27,7 @@ return [
             ]
         ],
         'local' => [
+            'disk_name' => 'local',
             'volume_path' => '/var/www',
             'free_size_limit' => 1000000000
         ]

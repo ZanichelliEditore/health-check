@@ -14,7 +14,7 @@ class FileSystemChecker implements CheckerInterface
     private $path;
     private $limitThreshold;
 
-    public function __construct(string $path, int $limitThreshold = 500, string $diskName = 'local')
+    public function __construct(string $diskName = 'local', string $path, int $limitThreshold = 500)
     {
         $this->diskName = $diskName;
         $this->path = $path;

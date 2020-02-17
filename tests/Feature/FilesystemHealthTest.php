@@ -2,18 +2,11 @@
 
 namespace Zanichelli\HealthCheck\Tests\Feature;
 
-use Illuminate\Support\Facades\Storage;
 use Zanichelli\HealthCheck\Tests\TestCase;
 use Zanichelli\HealthCheck\Http\Constants\Service;
 
 class FilesystemHealthTest extends TestCase
 {
-
-    protected function setup(): void
-    {
-        parent::setUp();
-        Storage::fake('local');
-    }
 
     /**
      * Define environment setup.
@@ -105,7 +98,6 @@ class FilesystemHealthTest extends TestCase
         );
 
         $response = $this->call('GET', 'api/health');
-        $content = json_decode($response->getContent());
         $response->assertStatus(400)
             ->assertExactJson([
                 'status' => [[

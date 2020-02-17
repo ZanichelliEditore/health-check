@@ -50,9 +50,7 @@ class HealthTest extends TestCase
         $controller = new HealthController($mock);
 
         $response = $controller->index();
-        $content = $response->getContent();
 
-        $this->assertJson($content, "{}");
         $this->assertEquals($response->getStatusCode(), 204);
     }
 
@@ -73,7 +71,6 @@ class HealthTest extends TestCase
 
         $controller = new HealthController($mock);
         $response = $controller->index();
-        $content = $response->getContent();
 
         $this->assertEquals($response->getStatusCode(), 200);
     }
@@ -97,7 +94,6 @@ class HealthTest extends TestCase
 
         $controller = new HealthController($mock);
         $response = $controller->index();
-        $content = $response->getContent();
 
         $this->assertEquals($response->getStatusCode(), 400);
     }

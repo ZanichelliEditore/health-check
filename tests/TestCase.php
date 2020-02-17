@@ -22,4 +22,5 @@ class TestCase extends OrchestraTestCase
     {
         return [HealthCheckServiceProvider::class];
     }
+
 }

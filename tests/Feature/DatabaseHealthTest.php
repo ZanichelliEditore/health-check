@@ -16,7 +16,9 @@ class DatabaseHealthTest extends TestCase
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('healthcheck.db', [['connection' => 'mysql']]);
+        $app['config']->set('healthcheck', [
+            'db' => [['connection' => 'mysql']]
+        ]);
     }
 
     /**

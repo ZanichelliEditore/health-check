@@ -16,7 +16,11 @@ class S3HealthTest extends TestCase
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('healthcheck.filesystem.s3', [['disk_name' => 's3']]);
+        $app['config']->set('healthcheck', [
+            'filesystem'  => [
+                's3' => [['disk_name' => 's3']]
+            ]
+        ]);
     }
 
     /**

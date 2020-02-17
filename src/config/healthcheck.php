@@ -15,7 +15,7 @@ return [
      * Restore the code below to use default package configuration.
      */
 
-    /* 'db' => [
+    'db' => [
         [
             'connection' => env('DB_CONNECTION', null)
         ]
@@ -23,13 +23,13 @@ return [
     'filesystem' => [
         's3' => [
             [
-                'disk_name' =>  null
+                'disk_name' =>  env('S3_CONNECTION', null)
             ]
         ],
         'local' => [
             'disk_name' => 'local',
-            'volume_path' => '/var/www',
-            'free_size_limit' => 1000 // storage as Megabyte
+            'volume_path' => env('FILESYSTEM_PATH', '/var/www/'),
+            'free_size_limit' => env('FILESYSTEM_FREE_SIZE', 1000) // storage as Megabyte
         ]
-    ] */
+    ]
 ];

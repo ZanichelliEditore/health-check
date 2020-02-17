@@ -23,9 +23,15 @@ class FilesystemHealthTest extends TestCase
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('healthcheck.filesystem.local', [
-                'volume_path' => './',
-                'free_size_limit' => 1
+        $app['config']->set(
+            'healthcheck',
+            [
+                'filesystem' => [
+                    'local' => [
+                        'volume_path' => './',
+                        'free_size_limit' => 1
+                    ]
+                ]
             ]
         );
     }
@@ -56,7 +62,9 @@ class FilesystemHealthTest extends TestCase
      */
     public function checkFilesystemNoSpace()
     {
-        $this->app['config']->set('healthcheck.filesystem.local', [
+        $this->app['config']->set(
+            'healthcheck.filesystem.local',
+            [
                 'volume_path' => './',
                 'free_size_limit' => 999999999999999
             ]
@@ -88,7 +96,9 @@ class FilesystemHealthTest extends TestCase
      */
     public function checkFilesystemError()
     {
-        $this->app['config']->set('healthcheck.filesystem.local', [
+        $this->app['config']->set(
+            'healthcheck.filesystem.local',
+            [
                 'disk_name' => 'test',
                 'volume_path' => './'
             ]

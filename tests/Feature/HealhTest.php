@@ -15,10 +15,14 @@ class HealthTest extends TestCase
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('healthcheck.db', []);
-        $app['config']->set('healthcheck.filesystem.local', []);
+        $app['config']->set('healthcheck', [
+            'db' => [],
+            'filesystem' => [
+                'local' => []
+            ]
+        ]);
     }
-    
+
     /**
      * @test
      *

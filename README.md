@@ -36,3 +36,19 @@ It is possible edit package configurations:
 php artisan vendor:publish --tag=config #create package config file inside own config folder
 php artisan vendor:publish --tag=resources #publish messages views inside resources folder
 ```
+
+Add params in config file (**`healthcheck.php`**) to add more db connections or s3 bucket connections , e.g.:
+
+```php
+    'db' => [
+        [
+            'connection' => env('DB_CONNECTION', null)
+        ],
+        [
+            'connection' => env('ORACLE_CONNECTION', null)
+        ],
+        [
+            'connection' => env('REDIS_CONNECTION', null)
+        ]
+    ],
+```

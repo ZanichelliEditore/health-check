@@ -9,5 +9,5 @@ before_script:
 
 script:
   - vendor/bin/phpunit tests/ --coverage-clover=coverage.xml
-# after_success:
-#   - bash <(curl -s https://codecov.io/bash) -t <id>
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -t dfded6a8-c5a0-45a6-aa39-9636373ac731

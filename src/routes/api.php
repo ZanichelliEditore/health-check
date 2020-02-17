@@ -2,5 +2,5 @@
 
 
 Route::group(['prefix' => 'api'], function () {
-    Route::get('healthcheck', "HealthController@index");
+    Route::get('health', "HealthController@index");
 });

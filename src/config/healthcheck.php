@@ -1,13 +1,35 @@
 <?php
 
 return [
-    /*
-    * Possible values: db,localstorage,s3,freespace
-    * The parameters are set in .env as a string with comma separated values
-    */
-    'checks' => env('HEALTHCHECKS', null),
-    'params' => [
-        'volume_path' => '/var/www',
-        'free_size_limit' => 1000000000
+    /**
+     * Delete (or set to null) every configuration that is not necessary
+     */
+    /**
+     * //INFO
+     * 1. Use db section to define all database connections to check,
+     *    an array element for every connection you have.
+     * 2. Filesystem section includes s3 check (an element for every possible usage) 
+     *    and local filesystem that comprehends storage size check.
+     *    Define your own min size to evaluate a safe situation for your application.
+     * 
+     * Restore the code below to use default package configuration.
+     */
+
+    'db' => [
+        [
+            'connection' => env('DB_CONNECTION', null)
+        ]
+    ],
+    'filesystem' => [
+        's3' => [
+            [
+                'disk_name' =>  env('S3_CONNECTION', null)
+            ]
+        ],
+        'local' => [
+            'disk_name' => 'local',
+            'volume_path' => env('FILESYSTEM_PATH', '/var/www/'),
+            'free_size_limit' => env('FILESYSTEM_FREE_SIZE', 1000) // storage as Megabyte
+        ]
     ]
 ];

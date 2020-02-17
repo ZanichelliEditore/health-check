@@ -100,7 +100,7 @@ class FilesystemHealthTest extends TestCase
         );
 
         $response = $this->call('GET', 'api/health');
-        $response->assertStatus(400)
+        $response->assertStatus(503)
             ->assertExactJson([
                 'status' => [[
                     'service' => Service::FILESYSTEM . '/test',

@@ -35,7 +35,7 @@ class HealthController extends Controller
         }, true);
 
         if (!$finalStatus) {
-            return Response::make(['status' => $data], 400);
+            return Response::make(['status' => $data], 503);
         }
         return Response::make(['status' => $data], 200);
     }

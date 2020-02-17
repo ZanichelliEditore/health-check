@@ -32,7 +32,7 @@ class S3HealthTest extends TestCase
     public function checkS3Fail()
     {
         $response = $this->call('GET', 'api/health');
-        $response->assertStatus(400)
+        $response->assertStatus(503)
             ->assertExactJson([
                 'status' => [[
                     'service' => Service::S3 . '/s3',

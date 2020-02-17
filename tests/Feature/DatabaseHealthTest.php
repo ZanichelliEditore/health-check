@@ -31,7 +31,7 @@ class DatabaseHealthTest extends TestCase
     public function checkDatabaseFail()
     {
         $response = $this->call('GET', 'api/health');
-        $response->assertStatus(400)
+        $response->assertStatus(503)
             ->assertExactJson([
                 'status' => [[
                     'service' => Service::DATABASE . '/mysql',

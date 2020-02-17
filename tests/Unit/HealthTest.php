@@ -115,7 +115,7 @@ class HealthTest extends TestCase
         $controller = new HealthController($mock);
         $response = $controller->index();
 
-        $this->assertEquals($response->getStatusCode(), 400);
+        $this->assertEquals($response->getStatusCode(), 503);
     }
 
     /**
@@ -140,7 +140,7 @@ class HealthTest extends TestCase
         $storage = $this->mockStorageDisk('local');
         $storage->shouldReceive('put')->once()->andReturn(false);
         $response = $this->call('GET', 'api/health');
-        $response->assertStatus(400)
+        $response->assertStatus(503)
             ->assertExactJson([
                 'status' => [[
                     'service' => Service::FILESYSTEM . '/local',

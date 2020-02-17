@@ -37,11 +37,6 @@ class Status
         return $this->metadata;
     }
 
-    public function setService(string $service)
-    {
-        $this->service = $service;
-    }
-
     public function setAvailable(bool $available)
     {
         $this->available = $available;

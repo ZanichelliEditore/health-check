@@ -98,11 +98,10 @@ class HealthCheckService
      */
     private function checkLocal(array $configuration)
     {
-        $disk = !isset($configuration['disk_name']) ? 'local' : $configuration['disk_name'];
         if (!isset($configuration['free_size_limit'])) {
-            return [new FileSystemChecker($disk, $configuration['volume_path'])];
+            return [new FileSystemChecker($configuration['disk_name'], $configuration['volume_path'])];
         }
-        return [new FileSystemChecker($disk, $configuration['volume_path'], $configuration['free_size_limit'])];
+        return [new FileSystemChecker($configuration['disk_name'], $configuration['volume_path'], $configuration['free_size_limit'])];
     }
 
     /**

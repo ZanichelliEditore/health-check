@@ -21,6 +21,7 @@ class FilesystemHealthTest extends TestCase
             [
                 'filesystem' => [
                     'local' => [
+                        'disk_name' => 'local',
                         'volume_path' => './',
                         'free_size_limit' => 1
                     ]
@@ -58,6 +59,7 @@ class FilesystemHealthTest extends TestCase
         $this->app['config']->set(
             'healthcheck.filesystem.local',
             [
+                'disk_name' => 'local',
                 'volume_path' => './',
                 'free_size_limit' => 999999999999999
             ]

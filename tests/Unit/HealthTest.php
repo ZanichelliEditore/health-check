@@ -130,6 +130,7 @@ class HealthTest extends TestCase
             [
                 'filesystem' => [
                     'local' => [
+                        'disk_name' => 'local',
                         'volume_path' => './',
                         'free_size_limit' => 1
                     ]

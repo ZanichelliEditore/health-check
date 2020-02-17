@@ -84,7 +84,9 @@ class HealthCheckService
     {
         $checkers = [];
         foreach ($configurations as $configuration) {
-            $checkers[] = new S3Checker($configuration['disk_name']);
+            if (!empty($configuration['disk_name'])) {
+                $checkers[] = new S3Checker($configuration['disk_name']);
+            }
         }
 
         return $checkers;
@@ -114,7 +116,9 @@ class HealthCheckService
     {
         $checkers = [];
         foreach ($configurations as $configuration) {
-            $checkers[] = new DatabaseChecker($configuration['connection']);
+            if (!empty($configuration['connection'])) {
+                $checkers[] = new DatabaseChecker($configuration['connection']);
+            }
         }
 
         return $checkers;

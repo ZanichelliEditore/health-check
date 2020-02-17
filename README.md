@@ -1,15 +1,17 @@
+[![Build Status](https://travis-ci.org/ZanichelliEditore/health-check.svg?branch=master)](https://travis-ci.org/ZanichelliEditore/health-check.svg?branch=master)
+[![codecov](https://codecov.io/gh/ZanichelliEditore/health-check/branch/master/graph/badge.svg)](https://codecov.io/gh/ZanichelliEditore/health-check)
+
 # Healthcheck Laravel
 
 ## Introduction
 
 This package has the purpose to add in laravel project an api route (**_`/api/health`_**).
 
-There are 4 possible system checks:
+There are various possible system checks:
 
 - Database status (`db`)
-- Availability local filesystem (`localstorage`)
-- Aws S3 filesystem connection (`s3`)
-- Volume available space, depending on certain limit size (`freespace`)
+- Availability local filesystem (`filesystem.local`)
+- Aws S3 filesystem connection (`filesystem.s3`)
 
 ## Installation
 
@@ -22,13 +24,9 @@ cd laravel-project
 composer require zanichelli/healthcheck
 ```
 
-Add **HEALTHCHECKS** param in `.env` file defining check type to launch, e.g.:
+Follow the [template-file](template_env.md) to include param about the package.
 
-```php
-HEALTHCHECKS=db,localstorage,s3,freespace
-```
-
-**`Note:`** default config vaule is _`null`_
+**`Note:`** Default config vaule is _`null`_
 
 ## Customization
 
@@ -37,12 +35,4 @@ It is possible edit package configurations:
 ```php
 php artisan vendor:publish --tag=config #create package config file inside own config folder
 php artisan vendor:publish --tag=resources #publish messages views inside resources folder
-```
-
-## Tests
-
-The package provides its own tests, use the following command:
-
-```php
-vendor/bin/phpunit vendor/zanichelli/healthcheck
 ```

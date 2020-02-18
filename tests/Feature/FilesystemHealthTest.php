@@ -130,7 +130,7 @@ class FilesystemHealthTest extends TestCase
         $response->assertStatus(503)
             ->assertExactJson([
                 'status' => [[
-                    'service' => Service::FILESYSTEM . '/test',
+                    'service' => Service::FILESYSTEM . '/local',
                     'available' => false,
                     'message' => trans('healthcheck::messages.DiskNotAvailable'),
                     'metadata' => []

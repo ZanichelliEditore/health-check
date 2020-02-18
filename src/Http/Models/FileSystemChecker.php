@@ -24,9 +24,9 @@ class FileSystemChecker implements CheckerInterface
     public function check(): Status
     {
         $status = new Status(Service::FILESYSTEM . '/' . $this->diskName);
-        $freeSpace = disk_free_space($this->path);
 
         try {
+            $freeSpace = disk_free_space($this->path);
             $saved = Storage::disk($this->diskName)->put('healthcheck.temp', 'Contents');
 
             if (!$saved) {

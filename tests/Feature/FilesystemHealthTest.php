@@ -110,4 +110,31 @@ class FilesystemHealthTest extends TestCase
                 ]]
             ]);
     }
+
+    /**
+     * @test
+     *
+     * @return void
+     */
+    public function checkFilesystemPathError()
+    {
+        $this->app['config']->set(
+            'healthcheck.filesystem.local',
+            [
+                'disk_name' => 'local',
+                'volume_path' => './ErrorPath'
+            ]
+        );
+
+        $response = $this->call('GET', 'api/health');
+        $response->assertStatus(503)
+            ->assertExactJson([
+                'status' => [[
+                    'service' => Service::FILESYSTEM . '/local',
+                    'available' => false,
+                    'message' => trans('healthcheck::messages.DiskNotAvailable'),
+                    'metadata' => []
+                ]]
+            ]);
+    }
 }

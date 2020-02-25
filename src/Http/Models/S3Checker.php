@@ -22,7 +22,7 @@ class S3Checker implements CheckerInterface
         $status = new Status(Service::S3 . '/' . $this->diskName);
 
         try {
-            Storage::disk($this->diskName);
+            Storage::disk($this->diskName)->exists('file.txt');
         } catch (Exception $e) {
             Log::error($e->getMessage());
             $status->setAvailable(false);

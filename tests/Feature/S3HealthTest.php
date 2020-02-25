@@ -3,8 +3,9 @@
 namespace Zanichelli\HealthCheck\Tests\Feature;
 
 use Illuminate\Support\Facades\Storage;
-use Zanichelli\HealthCheck\Http\Constants\Service;
 use Zanichelli\HealthCheck\Tests\TestCase;
+use Zanichelli\HealthCheck\Tests\Unit\HealthTest;
+use Zanichelli\HealthCheck\Http\Constants\Service;
 
 class S3HealthTest extends TestCase
 {
@@ -50,7 +51,9 @@ class S3HealthTest extends TestCase
      */
     public function checkS3Success()
     {
-        Storage::shouldReceive('disk')->once()->andReturn();
+        $healthStorage = new HealthTest();
+        $storage = $healthStorage->mockStorageDisk('s3');
+        $storage->shouldReceive('exists')->once()->andReturn(true);
 
         $response = $this->call('GET', 'api/health');
         $response->assertStatus(200)

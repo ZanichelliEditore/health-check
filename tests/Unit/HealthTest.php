@@ -19,7 +19,7 @@ class HealthTest extends TestCase
      * @param  String $disk Optional
      * @return Filesystem
      */
-    protected function mockStorageDisk($disk = 'mock')
+    public function mockStorageDisk($disk = 'mock')
     {
         Storage::extend('mock', function () {
             return m::mock(\Illuminate\Contracts\Filesystem\Filesystem::class);

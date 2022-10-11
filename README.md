@@ -15,7 +15,7 @@ There are various possible system checks:
 
 ## Installation
 
-First [install laravel](https://laravel.com/docs/6.x) project if you don't have yet.
+First [install laravel](https://laravel.com/docs/9.x) project if you don't have yet.
 
 Then install healthcheck package using composer:
 

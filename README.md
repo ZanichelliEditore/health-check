@@ -52,3 +52,4 @@ Add params in config file (**`healthcheck.php`**) to add more db connections or 
         ]
     ],
 ```
+If you **connect to an s3 bucket**, make sure to add an empty "healthcheck.txt" file in its root, as it's the file the package will check against.

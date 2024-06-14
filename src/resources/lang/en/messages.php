@@ -7,5 +7,6 @@ return [
     'filesystem' => [
         'WritingError' => 'Error on writing file',
         'NoDiskSpace' => 'Low disk space available'
-    ]
+    ],
+    'RedisConnectionNotAvailable' => 'Redis connection not available'
 ];

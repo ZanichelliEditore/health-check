@@ -7,5 +7,6 @@ return [
     'filesystem' => [
         'WritingError' => 'Errore durante la scrittura',
         'NoDiskSpace' => 'Spazio sul disco insufficente'
-    ]
+    ],
+    'RedisConnectionNotAvailable' => 'La connessione a Redis non è disponibile'
 ];

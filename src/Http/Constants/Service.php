@@ -9,4 +9,5 @@ class Service
     const S3 = 'awsFilesystem';
     const DATABASE = 'database';
     const FILESYSTEM = 'filesystem';
+    const REDIS = 'redis';
 }

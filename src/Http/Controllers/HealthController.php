@@ -2,6 +2,7 @@
 
 namespace Zanichelli\HealthCheck\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Response;
 use Zanichelli\HealthCheck\Http\Services\HealthCheckService;
 use Illuminate\Routing\Controller;
@@ -35,6 +36,7 @@ class HealthController extends Controller
         }, true);
 
         if (!$finalStatus) {
+            Log::error("Health check failed", ["healthCheckStatus" => $data]);
             return Response::make(['status' => $data], 503);
         }
         return Response::make(['status' => $data], 200);

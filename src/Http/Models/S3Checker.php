@@ -24,7 +24,7 @@ class S3Checker implements CheckerInterface
         try {
             Storage::disk($this->diskName)->exists('file.txt');
         } catch (Exception $e) {
-            Log::error($e->getMessage());
+            Log::error("Health check failed: " . $e->getMessage());
             $status->setAvailable(false);
             $status->setMessage(trans('healthcheck::messages.ErrorConnectionS3'));
         }

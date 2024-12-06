@@ -24,7 +24,7 @@ class DatabaseChecker implements CheckerInterface
         try {
             DB::connection($this->connectionName)->getPdo();
         } catch (Exception $e) {
-            Log::error($e->getMessage());
+            Log::error("Health check failed - DatabaseChecker: " . $e->getMessage());
             $status->setAvailable(false);
             $status->setMessage(trans('healthcheck::messages.DatabaseConnectionNotAvailable'));
         }

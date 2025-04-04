@@ -1,7 +1,8 @@
+# Healthcheck Laravel
+
 [![Build Status](https://travis-ci.org/ZanichelliEditore/health-check.svg?branch=master)](https://travis-ci.org/ZanichelliEditore/health-check.svg?branch=master)
 [![codecov](https://codecov.io/gh/ZanichelliEditore/health-check/branch/master/graph/badge.svg)](https://codecov.io/gh/ZanichelliEditore/health-check)
 
-# Healthcheck Laravel
 
 ## Introduction
 
@@ -15,7 +16,7 @@ There are various possible system checks:
 
 ## Installation
 
-First [install laravel](https://laravel.com/docs/10.x) project if you don't have yet.
+First [install laravel](https://laravel.com/docs/12.x) project if you don't have yet.
 
 Then install healthcheck package using composer:
 

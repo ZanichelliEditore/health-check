@@ -9,7 +9,7 @@ class Status
     private $message;
     private $metadata;
 
-    public function __construct(string $service, bool $available = true, string $message = null, array $metadata = [])
+    public function __construct(string $service, bool $available = true, ?string $message = null, array $metadata = [])
     {
         $this->service =  $service;
         $this->available =  $available;

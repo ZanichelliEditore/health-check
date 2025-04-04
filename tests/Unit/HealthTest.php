@@ -52,12 +52,7 @@ class HealthTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     *
-     * @return void
-     */
-    public function checkEmptySystem()
+    public function testCheckEmptySystem()
     {
         $mock = m::mock(HealthCheckService::class)->makePartial()
             ->shouldReceive([
@@ -74,12 +69,7 @@ class HealthTest extends TestCase
         $this->assertEquals($response->getStatusCode(), 204);
     }
 
-    /**
-     * @test
-     *
-     * @return void
-     */
-    public function checkSuccesSystems()
+    public function testCheckSuccesSystems()
     {
         $mock = m::mock(HealthCheckService::class)->makePartial()
             ->shouldReceive([
@@ -95,12 +85,7 @@ class HealthTest extends TestCase
         $this->assertEquals($response->getStatusCode(), 200);
     }
 
-    /**
-     * @test
-     *
-     * @return void
-     */
-    public function checkFailSystems()
+    public function testCheckFailSystems()
     {
         $data = $this->getArrayStatus();
         $data[0]['available'] = false;
@@ -118,12 +103,7 @@ class HealthTest extends TestCase
         $this->assertEquals($response->getStatusCode(), 503);
     }
 
-    /**
-     * @test
-     *
-     * @return void
-     */
-    public function checkFailSaveFilesystem()
+    public function testCheckFailSaveFilesystem()
     {
         $this->app['config']->set(
             'healthcheck',

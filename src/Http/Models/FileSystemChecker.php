@@ -30,13 +30,14 @@ class FileSystemChecker implements CheckerInterface
             $saved = Storage::disk($this->diskName)->put('healthcheck.temp', 'Contents');
 
             if (!$saved) {
+                Log::error("Health check failed - FileSystemChecker: could not save healthcheck.temp");
                 $status->setAvailable(false);
                 $status->setMessage(trans('healthcheck::messages.filesystem.WritingError'));
             } else {
                 Storage::disk($this->diskName)->delete('healthcheck.temp');
             }
         } catch (Exception $e) {
-            Log::error($e->getMessage());
+            Log::error("Health check failed - FileSystemChecker: " . $e->getMessage());
             $status->setAvailable(false);
             $status->setMessage(trans('healthcheck::messages.DiskNotAvailable'));
 

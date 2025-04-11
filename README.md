@@ -62,4 +62,6 @@ Assuming you have installed the package in the Example project, you can run the 
 
 `cd vendor/zanichelli/healthcheck`
 
+`composer install`
+
 `vendor/bin/phpunit`

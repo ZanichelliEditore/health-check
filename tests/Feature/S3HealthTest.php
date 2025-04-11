@@ -40,7 +40,7 @@ class S3HealthTest extends TestCase
 
     public function testCheckS3Success()
     {
-        $healthStorage = new HealthTest();
+        $healthStorage = new HealthTest('testCheckS3Success');
         $storage = $healthStorage->mockStorageDisk('s3');
         $storage->shouldReceive('exists')->once()->andReturn(true);
 

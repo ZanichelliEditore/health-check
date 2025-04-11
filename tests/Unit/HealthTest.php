@@ -12,7 +12,6 @@ use Zanichelli\HealthCheck\Http\Controllers\HealthController;
 
 class HealthTest extends TestCase
 {
-
     /**
      * Create a mock of a Storage disk. 
 

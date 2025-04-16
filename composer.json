@@ -4,7 +4,7 @@
   "type": "library",
   "require-dev": {
     "mockery/mockery": "^1.0",
-    "phpunit/phpunit": "^12.0",
+    "phpunit/phpunit": "^11.0",
     "orchestra/testbench": "^10.0"
   },
   "authors": [
@@ -13,7 +13,7 @@
       "email": "developers@zanichelli.it"
     }
   ],
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "require": {
     "laravel/framework": "^5.6|^6|^7|^8|^9|^10|^11|^12",
     "league/flysystem-aws-s3-v3": "^1.0@dev|^2.0@dev|^3.0@dev"

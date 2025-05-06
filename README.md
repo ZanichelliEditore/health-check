@@ -1,7 +1,7 @@
+# Healthcheck Laravel
+
 [![Build Status](https://travis-ci.org/ZanichelliEditore/health-check.svg?branch=master)](https://travis-ci.org/ZanichelliEditore/health-check.svg?branch=master)
 [![codecov](https://codecov.io/gh/ZanichelliEditore/health-check/branch/master/graph/badge.svg)](https://codecov.io/gh/ZanichelliEditore/health-check)
-
-# Healthcheck Laravel
 
 ## Introduction
 
@@ -15,7 +15,7 @@ There are various possible system checks:
 
 ## Installation
 
-First [install laravel](https://laravel.com/docs/10.x) project if you don't have yet.
+First [install laravel](https://laravel.com/docs/12.x) project if you don't have yet.
 
 Then install healthcheck package using composer:
 
@@ -52,3 +52,16 @@ Add params in config file (**`healthcheck.php`**) to add more db connections or 
         ]
     ],
 ```
+
+## Testing
+
+You can run tests from the project where the package was installed, remember to use the PHPUnit binary located in healthcheck vendor directory. 
+Assuming you have installed the package in the Example project, you can run the following commands:
+
+`docker exec -it example_app bash`
+
+`cd vendor/zanichelli/healthcheck`
+
+`composer install`
+
+`vendor/bin/phpunit`

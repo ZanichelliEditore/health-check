@@ -23,12 +23,7 @@ class DatabaseHealthTest extends TestCase
         ]);
     }
 
-    /**
-     * @test
-     *
-     * @return void
-     */
-    public function checkDatabaseFail()
+    public function testCheckDatabaseFail()
     {
         $response = $this->call('GET', 'api/health');
         $response->assertStatus(503)
@@ -42,12 +37,8 @@ class DatabaseHealthTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     *
-     * @return void
-     */
-    public function checkDatabaseSuccess()
+
+    public function testCheckDatabaseSuccess()
     {
         DB::shouldReceive('connection')->once()->andReturn(
             m::mock('Illuminate\Database\Connection', function ($mock) {

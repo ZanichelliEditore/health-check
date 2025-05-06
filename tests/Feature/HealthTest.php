@@ -23,12 +23,7 @@ class HealthTest extends TestCase
         ]);
     }
 
-    /**
-     * @test
-     *
-     * @return void
-     */
-    public function checkEmptyConfigurations()
+    public function testCheckEmptyConfigurations()
     {
         $response = $this->call('GET', 'api/health');
         $response->assertStatus(204);

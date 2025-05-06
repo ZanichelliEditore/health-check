@@ -30,12 +30,7 @@ class FilesystemHealthTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     *
-     * @return void
-     */
-    public function checkFilesystemSuccess()
+    public function testCheckFilesystemSuccess()
     {
         $response = $this->call('GET', 'api/health');
         $response->assertStatus(200)
@@ -49,12 +44,7 @@ class FilesystemHealthTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     *
-     * @return void
-     */
-    public function checkFilesystemNoSpace()
+    public function testCheckFilesystemNoSpace()
     {
         $this->app['config']->set(
             'healthcheck.filesystem.local',
@@ -84,12 +74,7 @@ class FilesystemHealthTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     *
-     * @return void
-     */
-    public function checkFilesystemError()
+    public function testCheckFilesystemError()
     {
         $this->app['config']->set(
             'healthcheck.filesystem.local',
@@ -111,12 +96,7 @@ class FilesystemHealthTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     *
-     * @return void
-     */
-    public function checkFilesystemPathError()
+    public function testCheckFilesystemPathError()
     {
         $this->app['config']->set(
             'healthcheck.filesystem.local',

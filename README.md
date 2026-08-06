@@ -12,6 +12,7 @@ There are various possible system checks:
 - Database status (`db`)
 - Availability local filesystem (`filesystem.local`)
 - Aws S3 filesystem connection (`filesystem.s3`)
+- Redis status (`redis`)
 
 ## Installation
 

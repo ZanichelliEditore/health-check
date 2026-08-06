@@ -3,6 +3,7 @@
 namespace Zanichelli\HealthCheck\Http\Services;
 
 use Zanichelli\HealthCheck\Http\Models\S3Checker;
+use Zanichelli\HealthCheck\Http\Models\RedisChecker;
 use Zanichelli\HealthCheck\Http\Models\DatabaseChecker;
 use Zanichelli\HealthCheck\Http\Models\FileSystemChecker;
 
@@ -30,6 +31,9 @@ class HealthCheckService
                     break;
                 case 'filesystem':
                     $checkers = array_merge($checkers, $this->checkFilesystem($configurations));
+                    break;
+                case 'redis':
+                    $checkers = array_merge($checkers, $this->checkRedis($configurations));
                     break;
                 default:
             }
@@ -118,6 +122,24 @@ class HealthCheckService
         foreach ($configurations as $configuration) {
             if (!empty($configuration['connection'])) {
                 $checkers[] = new DatabaseChecker($configuration['connection']);
+            }
+        }
+
+        return $checkers;
+    }
+
+    /**
+     * Check Redis connections
+     *
+     * @param array $configurations
+     * @return array
+     */
+    private function checkRedis(array $configurations)
+    {
+        $checkers = [];
+        foreach ($configurations as $configuration) {
+            if (!empty($configuration['connection'])) {
+                $checkers[] = new RedisChecker($configuration['connection']);
             }
         }
 

@@ -11,6 +11,8 @@ return [
      * 2. Filesystem section includes s3 check (an element for every possible usage) 
      *    and local filesystem that comprehends storage size check.
      *    Define your own min size to evaluate a safe situation for your application.
+     * 3. Use redis section to define all Redis connections to check,
+     *    an array element for every connection you have.
      * 
      * Restore the code below to use default package configuration.
      */
@@ -31,5 +33,10 @@ return [
             'volume_path' => env('FILESYSTEM_PATH', '/var/www/'),
             'free_size_limit' => env('FILESYSTEM_FREE_SIZE', 1000) // storage as Megabyte
         ]
-    ]
+    ],
+    'redis' => [
+        [
+            'connection' => 'default'
+        ]
+    ],
 ];
